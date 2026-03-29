@@ -1,4 +1,4 @@
-# Vishal Portfolio - Next.js Setup & Deployment
+# Vishal Portfolio - 
 
 This is the source code for Vishal's Portfolio project, built with Next.js and styled for a dynamic, professional experience. 
 
