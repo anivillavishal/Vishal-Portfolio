@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vishal Portfolio - Next.js Setup & Deployment
 
-## Getting Started
+This is the source code for Vishal's Portfolio project, built with Next.js and styled for a dynamic, professional experience. 
 
-First, run the development server:
+## 🚀 Setting up GitHub Pages (For Deployment)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project is perfectly pre-configured to automatically build and deploy to **GitHub Pages** using GitHub Actions, and specifically to map to the custom domain `vishalanivilla.studio`. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+When you fork or push this repository to your own GitHub account, follow these exact steps to make it go live:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. Enable GitHub Actions for Pages
+- Open your GitHub repository in the browser.
+- Go to the **Settings** tab at the top.
+- On the left sidebar, click **"Pages"**.
+- Under **Build and deployment -> Source**, change the dropdown from "Deploy from a branch" to **"GitHub Actions"**.
+- _(GitHub will now automatically read the `.github/workflows/nextjs.yml` file and start building the site.)_
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. Configure the Custom Domain in GitHub
+- On the same **Settings -> Pages** screen, scroll down to the **"Custom domain"** section.
+- Type `vishalanivilla.studio` and click **Save**.
+- Wait for a DNS check to appear. GitHub will start generating an SSL/HTTPS certificate.
 
-## Learn More
+### 3. Connect your DNS Records (Domain Provider)
+- Log in to your domain provider (where you bought `vishalanivilla.studio`, e.g., GoDaddy, Namecheap, Route53).
+- Go to the **DNS Management / Nameservers** section.
+- Add these **A Records** (Points your root domain directly to GitHub):
+  - Type: `A` | Host/Name: `@` (or leave blank) | Value: `185.199.108.153`
+  - Type: `A` | Host/Name: `@` (or leave blank) | Value: `185.199.109.153`
+  - Type: `A` | Host/Name: `@` (or leave blank) | Value: `185.199.110.153`
+  - Type: `A` | Host/Name: `@` (or leave blank) | Value: `185.199.111.153`
+- Add a **CNAME Record** (To redirect the www version):
+  - Type: `CNAME` | Host/Name: `www` | Value: `<YOUR-GITHUB-USERNAME>.github.io` (Replace `<YOUR-GITHUB-USERNAME>` with your exact GitHub username)
 
-To learn more about Next.js, take a look at the following resources:
+Once you've done this, it may take anywhere from 15 minutes to a few hours for the DNS changes to fully propagate worldwide and the SSL certificate to be provisioned.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Local Development
 
-## Deploy on Vercel
+If you'd like to run or test the project locally on your machine:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Make sure you have [Node.js](https://nodejs.org/en/) installed.
+2. Clone this repository locally.
+3. Open a terminal in the project folder and run:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The page will auto-update as you edit files, typically found inside the `src/` or `app/` folder.
